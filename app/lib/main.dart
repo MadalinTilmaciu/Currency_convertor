@@ -58,11 +58,8 @@ class _ConvertorPageState extends State<ConvertorPage> {
               fit: BoxFit.fill,
             ),
           ),
-          const Divider(
-            height: 10,
-          ),
           SizedBox(
-            width: MediaQuery.of(context).size.width - 20,
+            width: MediaQuery.of(context).size.width - 30,
             child: Form(
               key: _formKey,
               child: TextFormField(
@@ -86,9 +83,6 @@ class _ConvertorPageState extends State<ConvertorPage> {
                 ),
               ),
             ),
-          ),
-          const Divider(
-            height: 10,
           ),
           ElevatedButton(
             onPressed: () {
