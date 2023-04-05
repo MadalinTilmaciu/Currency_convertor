@@ -67,7 +67,9 @@ class _ConvertorPageState extends State<ConvertorPage> {
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*')),
+                  FilteringTextInputFormatter.allow(
+                    RegExp(r'^\d+\.?\d*'),
+                  ),
                 ],
                 validator: (value) {
                   if (value == null ||
@@ -79,27 +81,38 @@ class _ConvertorPageState extends State<ConvertorPage> {
                 },
                 decoration: const InputDecoration(
                   labelText: 'Enter the amount in EUR',
-                  errorStyle: TextStyle(color: Colors.red),
+                  errorStyle: TextStyle(
+                    color: Colors.red,
+                  ),
                 ),
               ),
             ),
           ),
           ElevatedButton(
             onPressed: () {
-              setState(() {});
-              if (_formKey.currentState!.validate()) {
-                _inputController.text != ''
-                    ? _ronAmount = double.parse(_inputController.text) * 4.5
-                    : _ronAmount = 0;
-              }
+              setState(() {
+                if (_formKey.currentState!.validate()) {
+                  _inputController.text != ''
+                      ? _ronAmount =
+                          double.tryParse(_inputController.text)! * 4.5
+                      : _ronAmount = 0;
+                }
+              });
             },
             style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll<Color>(Colors.grey),
-              foregroundColor: MaterialStatePropertyAll<Color>(Colors.black),
+              backgroundColor: MaterialStatePropertyAll<Color>(
+                Colors.grey,
+              ),
+              foregroundColor: MaterialStatePropertyAll<Color>(
+                Colors.black,
+              ),
             ),
             child: const Text(
               'Convert!',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Text(
