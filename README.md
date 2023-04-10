@@ -1,10 +1,8 @@
-# app
+# Currency Convertor
 
-A new Flutter project.
+This is a simple one-page app that simulates a currency conversion from EUR to romanian LEU.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+## Flutter tips
 
 A few resources to get you started if this is your first Flutter project:
 
