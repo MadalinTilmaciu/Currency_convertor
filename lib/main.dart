@@ -31,8 +31,8 @@ class ConvertorPage extends StatefulWidget {
 
 class _ConvertorPageState extends State<ConvertorPage> {
   double _ronAmount = 0;
-  final _formKey = GlobalKey<FormState>();
-  final _inputController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _inputController = TextEditingController();
 
   @override
   void dispose() {
@@ -48,8 +48,7 @@ class _ConvertorPageState extends State<ConvertorPage> {
         centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
+        children: <Widget>[
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 250,
@@ -66,12 +65,12 @@ class _ConvertorPageState extends State<ConvertorPage> {
                 controller: _inputController,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
-                inputFormatters: [
+                inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(
                     RegExp(r'^\d+\.?\d*'),
                   ),
                 ],
-                validator: (value) {
+                validator: (String? value) {
                   if (value == null ||
                       value.isEmpty ||
                       !RegExp(r'^\d+\.?\d*$').hasMatch(value)) {
@@ -116,7 +115,7 @@ class _ConvertorPageState extends State<ConvertorPage> {
             ),
           ),
           Text(
-            _ronAmount != 0 ? '${_ronAmount.toString()} RON' : '',
+            _ronAmount != 0 ? '$_ronAmount RON' : '',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
