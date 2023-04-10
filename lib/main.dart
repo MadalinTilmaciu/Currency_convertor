@@ -63,17 +63,14 @@ class _ConvertorPageState extends State<ConvertorPage> {
               key: _formKey,
               child: TextFormField(
                 controller: _inputController,
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(
                     RegExp(r'^\d+\.?\d*'),
                   ),
                 ],
                 validator: (String? value) {
-                  if (value == null ||
-                      value.isEmpty ||
-                      !RegExp(r'^\d+\.?\d*$').hasMatch(value)) {
+                  if (value == null || value.isEmpty || !RegExp(r'^\d+\.?\d*$').hasMatch(value)) {
                     return 'Please enter a valid decimal number';
                   }
                   return null;
@@ -92,8 +89,7 @@ class _ConvertorPageState extends State<ConvertorPage> {
               setState(() {
                 if (_formKey.currentState!.validate()) {
                   _inputController.text != ''
-                      ? _ronAmount =
-                          double.tryParse(_inputController.text)! * 4.5
+                      ? _ronAmount = double.tryParse(_inputController.text)! * 4.5
                       : _ronAmount = 0;
                 }
               });
